@@ -69,16 +69,13 @@ print(list4)
 ## 5 count how many times the word 'the' appears in the text file - 'sometext.txt'
 
 txtfile = open('sometext.txt', 'r')
-thelist = [x.count('the') for x in txtfile]
+list = txtfile.read().lower().replace('\n','')
+thelist = [list.count('the')]
 print(thelist)
 
 ## 6 Extract the numbers from the following phrase ##
 
-# phrase = 'In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each " +
-# "event, with about 3 or 4 that were classifled as serious per event.'
+phrase = 'In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each event, with about 3 or 4 that were classifled as serious per event.'
 
-
-
-
-
-
+phrase1 = [x for x in phrase if x.isdigit()]
+print(phrase1)

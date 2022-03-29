@@ -82,19 +82,30 @@ Elements of the said list that contain specific substring:
 '''
 
 Original_list = ['red', 'black', 'white', 'green', 'orange']
-
-
-
+str1 = 'ack'
+list4 = list(filter(lambda x: (str1 in x), Original_list))
+print(list4)
+str2 = 'abc'
+list5 = list(filter(lambda x: (str2 in x), Original_list))
+print(list5)
 
 ''' 6)
 check whether a given string contains a capital letter, a lower case letter, a number and a minimum length of 8 characters.
 (This is like a password verification function, HINT: Python function 'any' may be useful)
 '''
 
-
-
-
-
+def check_string(str1):
+    message = [
+    lambda str1: any(x.isupper() for x in str1) or 'Password must have 1 upper case character.',
+    lambda str1: any(x.islower() for x in str1) or 'Password must have 1 lower case character.',
+    lambda str1: any(x.isdigit() for x in str1) or 'Password must have 1 number.',
+    lambda str1: len(str1) >= 8                 or 'Password length should be at least 8.',]
+    result = [x for x in [i(str1) for i in message] if x != True]
+    if not result:
+        result.append('Valid password.')
+    return result    
+s = input("Input the password: ")
+print(check_string(s))
 
 
 ''' 7)
@@ -106,3 +117,7 @@ original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sci
 # Expected Result:
 # [('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]
 '''
+
+original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]
+original_scores.sort(key = lambda x: x[1])
+print(original_scores)
